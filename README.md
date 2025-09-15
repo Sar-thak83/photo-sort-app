@@ -111,7 +111,3 @@ npm run dev
 4. Photos with matching faces are identified using cosine similarity
 5. Matching photos are compressed into a new ZIP file
 6. The frontend provides a download link for the result
-
-## License
-
-MIT

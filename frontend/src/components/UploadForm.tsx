@@ -101,62 +101,49 @@ const UploadForm: React.FC<UploadFormProps> = ({ onUploadSuccess }) => {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <h2 className="text-xl font-semibold mb-4">Upload Your Files</h2>
-        <p className="text-sm text-gray-600 mb-6">
-          Upload a ZIP file containing all event photos and your portrait photo to find your pictures.
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      className="space-y-8 bg-gradient-to-br from-purple-200 via-blue-100 to-teal-100 shadow-2xl rounded-3xl p-10 border border-blue-200 animate-fade-in"
+    >
+      <div className="text-center">
+        <h2 className="text-3xl font-extrabold mb-2 text-purple-700 animate-fade-in">Upload Your Files</h2>
+        <p className="text-base text-blue-600 mb-6 animate-fade-in-slow">
+          Upload a ZIP of event photos and your portrait to find your pictures using face recognition.
         </p>
       </div>
 
-      <div className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Event Photos (ZIP file)
-          </label>
+  <div className="space-y-6">
+        <div className="transition-all duration-300">
+          <label className="block text-sm font-semibold text-purple-700 mb-1">Event Photos (ZIP file)</label>
           <input
             type="file"
             accept=".zip"
             onChange={handleEventPhotosChange}
             disabled={isUploading}
-            className="block w-full text-sm text-gray-500
-              file:mr-4 file:py-2 file:px-4
-              file:rounded-md file:border-0
-              file:text-sm file:font-semibold
-              file:bg-blue-50 file:text-blue-700
-              hover:file:bg-blue-100
-              disabled:opacity-50 disabled:cursor-not-allowed"
+            className="block w-full text-sm text-blue-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-purple-200 file:to-blue-200 file:text-blue-700 hover:file:bg-blue-200 focus:file:bg-blue-200 disabled:opacity-50 disabled:cursor-not-allowed"
             required
           />
           {eventPhotos && (
-            <p className="mt-1 text-xs text-gray-500">
-              Selected: {eventPhotos.name} ({(eventPhotos.size / (1024 * 1024)).toFixed(2)} MB)
+            <p className="mt-2 text-xs text-purple-600 animate-fade-in">
+              Selected: <span className="font-semibold">{eventPhotos.name}</span> ({(eventPhotos.size / (1024 * 1024)).toFixed(2)} MB)
             </p>
           )}
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Your Portrait Photo
-          </label>
+        <div className="transition-all duration-300">
+          <label className="block text-sm font-semibold text-purple-700 mb-1">Your Portrait Photo</label>
           <input
             type="file"
             accept="image/*"
             onChange={handlePortraitChange}
             disabled={isUploading}
-            className="block w-full text-sm text-gray-500
-              file:mr-4 file:py-2 file:px-4
-              file:rounded-md file:border-0
-              file:text-sm file:font-semibold
-              file:bg-blue-50 file:text-blue-700
-              hover:file:bg-blue-100
-              disabled:opacity-50 disabled:cursor-not-allowed"
+            className="block w-full text-sm text-blue-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-purple-200 file:to-blue-200 file:text-blue-700 hover:file:bg-blue-200 focus:file:bg-blue-200 disabled:opacity-50 disabled:cursor-not-allowed"
             required
           />
           {portrait && (
-            <div className="mt-2 flex items-center">
-              <div className="w-16 h-16 overflow-hidden rounded-md">
-                {/* Use Next.js Image for optimization */}
+            <div className="mt-3 flex items-center animate-fade-in">
+              <div className="w-16 h-16 overflow-hidden rounded-full border-2 border-purple-200 shadow-lg animate-scale-in">
                 <Image
                   src={URL.createObjectURL(portrait)}
                   alt="Portrait preview"
@@ -165,25 +152,21 @@ const UploadForm: React.FC<UploadFormProps> = ({ onUploadSuccess }) => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="ml-3 text-xs text-gray-500">
-                {portrait.name} ({(portrait.size / 1024).toFixed(2)} KB)
+              <p className="ml-3 text-xs text-purple-600">
+                <span className="font-semibold">{portrait.name}</span> ({(portrait.size / 1024).toFixed(2)} KB)
               </p>
             </div>
           )}
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Your Name
-          </label>
+        <div className="transition-all duration-300">
+          <label className="block text-sm font-semibold text-purple-700 mb-1">Your Name</label>
           <input
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             disabled={isUploading}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
-              focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm
-              disabled:opacity-50 disabled:cursor-not-allowed"
+            className="mt-1 block text-black font-semibold w-full px-3 py-2 border border-purple-200 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
             placeholder="Enter your name"
             required
           />
@@ -191,38 +174,42 @@ const UploadForm: React.FC<UploadFormProps> = ({ onUploadSuccess }) => {
       </div>
 
       {isUploading && (
-        <div className="mt-4">
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+        <div className="mt-6 animate-fade-in-slow">
+          <div className="w-full bg-gradient-to-r from-purple-200 via-blue-100 to-teal-200 rounded-full h-3 shadow-inner">
             <div
-              className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-purple-500 via-blue-500 to-teal-400 h-3 rounded-full animate-progress"
               style={{ width: `${uploadProgress}%` }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 mt-2 text-center">
+          <p className="text-sm text-purple-700 mt-2 text-center animate-pulse">
             Uploading... {uploadProgress}%
           </p>
         </div>
       )}
 
-      <div className="flex justify-end space-x-3">
+      <div className="flex justify-end space-x-3 mt-8">
         <button
           type="button"
           onClick={resetForm}
           disabled={isUploading}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm
-            hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
-            disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-5 py-2 text-sm font-semibold text-purple-700 bg-white border border-purple-200 rounded-lg shadow hover:bg-purple-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Reset
         </button>
         <button
           type="submit"
           disabled={isUploading || !eventPhotos || !portrait || !userName}
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm
-            hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
-            disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-5 py-2 text-sm font-semibold text-white bg-gradient-to-r from-purple-500 via-blue-500 to-teal-400 border border-transparent rounded-lg shadow hover:scale-105 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {isUploading ? 'Uploading...' : 'Upload Files'}
+          {isUploading ? (
+            <span className="flex items-center gap-2">
+              <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Uploading...
+            </span>
+          ) : 'Upload Files'}
         </button>
       </div>
     </form>
@@ -230,5 +217,4 @@ const UploadForm: React.FC<UploadFormProps> = ({ onUploadSuccess }) => {
 };
 
 export default UploadForm;
-
 

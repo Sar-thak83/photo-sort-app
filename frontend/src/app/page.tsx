@@ -79,15 +79,15 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8 md:p-24">
+    <main className="flex h-[100px]  w-[100vw] flex-col items-center justify-between p-8 md:p-24">
       <div className="z-10 w-full max-w-3xl items-center justify-between font-mono text-sm">
-        <h1 className="text-4xl font-bold mb-8 text-center">Photo Sort App</h1>
-        <p className="text-center mb-12 text-lg">
+        <h1 className="text-6xl font-bold mb-8 text-purple-700 text-center ">Photo Sort App</h1>
+        <p className="text-center text-blue-600 mb-12 text-lg">
           Extract your photos from event collections using face recognition
         </p>
 
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert">
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4  rounded mb-6" role="alert">
             <p>{error}</p>
             <button 
               onClick={() => setError(null)}
@@ -98,7 +98,7 @@ export default function Home() {
           </div>
         )}
 
-        <div className="bg-white shadow-xl rounded-lg p-6">
+        {/* <div className=" shadow-xl rounded-lg p-6"> */}
           {currentStep === 'upload' && (
             <UploadForm onUploadSuccess={handleUploadSuccess} />
           )}
@@ -115,9 +115,8 @@ export default function Home() {
               onReset={handleReset} 
             />
           )}
-        </div>
+        {/* </div> */}
       </div>
     </main>
   );
 }
-
