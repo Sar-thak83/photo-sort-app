@@ -59,7 +59,7 @@ photo-sort-app/
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/photo-sort-app.git
+git clone https://github.com/Sar-thak83/photo-sort-app.git
 cd photo-sort-app
 ```
 

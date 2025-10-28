@@ -5,7 +5,7 @@ import path from 'path';
 // We'll use TensorFlow.js directly for face detection and recognition
 export class FaceExtractorService {
   private model: tf.GraphModel | null = null;
-  private readonly similarityThreshold = 0.5; // Threshold for face matching (0-1, lowered for better matching)
+  private readonly similarityThreshold = 0.3; // Threshold for face matching (0-1, lowered for better matching)
 
   /**
    * Load face detection model
